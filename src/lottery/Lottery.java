@@ -2,6 +2,14 @@ package lottery;
 
 import java.util.Random;
 
+
+/**
+ * @author Robert Davis
+ * COP35030 Computer Science 2
+ * For Dr. Steinberg
+ * Fall 21
+ */
+
 public class Lottery {
 
     //Private attribute for the ticket
@@ -27,7 +35,7 @@ public class Lottery {
     }
 
 
-    //Generate a string of random digits for the ticket
+    //Generate a string of random digits for Random Winner
     public static String GenerateRandomWinner(Random randRef) {
         String digits = "";
         for (int i = 0; i < 6; i++) {
@@ -36,6 +44,7 @@ public class Lottery {
         return digits;
     }
 
+    //Partition function for Quicksort
     static int partition(Lottery[] arr, int low, int high) {
         Lottery pivot = arr[high];
 
@@ -51,12 +60,14 @@ public class Lottery {
     }
 
 
+    //Swap function for Quicksort
     static void swap(Lottery[] arr, int i, int j) {
         Lottery temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
+    //Quicksort Function
     static void quickSort(Lottery[] arr, int low, int high) {
         if (low < high) {
             int index = partition(arr, low, high);
@@ -76,6 +87,7 @@ public class Lottery {
         return randRef.nextInt(maxIndex);
     }
 
+    //Solution1 Brute Force
     public static Boolean Solution1(Lottery[] array, String sol, int maxIndex) {
         for (int i = 0; i < maxIndex; i++)
             if (array[i].GetTicket().equals(sol))
@@ -83,7 +95,7 @@ public class Lottery {
         return false;
     }
 
-    //@todo Check Code Here
+
     //Tried to make recursive binary search but always resulted in stack overflow
 //    public static Boolean Solution2(Lottery[] array, int low, int high, String sol){
 //
@@ -102,6 +114,7 @@ public class Lottery {
 //        return false;
 //    }
 
+    //Iterative Solution2, binary search
     public static Boolean Solution2(Lottery[] array, int low, int high, String sol){
         int left = low;
         int right = high;
