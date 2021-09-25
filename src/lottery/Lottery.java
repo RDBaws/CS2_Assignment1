@@ -28,7 +28,7 @@ public class Lottery {
 
 
     //Generate a string of random digits for the ticket
-    static String GenerateRandomWinner(Random randRef) {
+    public static String GenerateRandomWinner(Random randRef) {
         String digits = "";
         for (int i = 0; i < 6; i++) {
             digits = digits.concat(String.valueOf(randRef.nextInt(10)));
