@@ -83,20 +83,40 @@ public class Lottery {
         return false;
     }
 
+    //@todo Check Code Here
+    //Tried to make recursive binary search but always resulted in stack overflow
+//    public static Boolean Solution2(Lottery[] array, int low, int high, String sol){
+//
+//        if(high >= low){
+//            int mid = (low + (high -1)) / 2;
+//
+//            if((array[mid].GetTicket()).equals(sol))
+//                return true;
+//
+//            if(Integer.parseInt(array[mid].GetTicket()) > Integer.parseInt(sol))
+//                return Solution2(array, low, mid - 1, sol);
+//
+//            if(Integer.parseInt(array[mid].GetTicket()) < Integer.parseInt(sol))
+//                return Solution2(array, mid + 1, high, sol);
+//        }
+//        return false;
+//    }
+
     public static Boolean Solution2(Lottery[] array, int low, int high, String sol){
+        int left = low;
+        int right = high;
+        int mid = (left + right)/2;
 
-        if(high >= low){
-            int mid = (low + (high -1)) / 2;
-
+        while(left <= right){
+            if(Integer.parseInt(array[mid].GetTicket()) > Integer.parseInt(sol))
+                right = mid - 1;
+            if(Integer.parseInt(array[mid].GetTicket()) < Integer.parseInt(sol))
+                left = mid + 1;
             if((array[mid].GetTicket()).equals(sol))
                 return true;
-
-            if(Integer.parseInt(array[mid].GetTicket()) > Integer.parseInt(sol))
-                return Solution2(array, low, mid - 1, sol);
-
-            if(Integer.parseInt(array[mid].GetTicket()) < Integer.parseInt(sol))
-                return Solution2(array, mid + 1, high, sol);
+            mid = (left + right)/2;
         }
+
         return false;
     }
 }
